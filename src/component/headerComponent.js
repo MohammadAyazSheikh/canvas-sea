@@ -2,29 +2,54 @@ import React, { Component } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import '../styles/navStyle.css'
 
+let width = window.innerWidth;
 export default class Header extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            toggleMenu: 0
+            toggleMenu: true,
+            width: 600
         }
 
         this.toggle = this.toggle.bind(this)
+        this.updateSize = this.updateSize.bind(this)
     }
 
     toggle() {
         console.log("invoke")
-       let val =  this.state.toggleMenu === 1? 0 : 1
+        let val = !this.state.toggleMenu
         this.setState({ toggleMenu: val })
-        console.log(this.state.toggleMenu)
+
+
     }
 
 
+    updateSize() {
+        width = window.innerWidth;
+        if (width <= 600) {
+            this.setState({ toggleMenu: true })
+        }
+        else {
+            this.setState({ toggleMenu: false })
+        }
+    }
+
+
+    componentDidMount() {
+
+        window.addEventListener('resize', this.updateSize);
+    }
+
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateSize);
+    }
+
     render() {
 
-        const hideMenu = this.state.toggleMenu ? "0px" : "150px"
+
         return (
             <div >
                 <div className="header">
@@ -39,13 +64,19 @@ export default class Header extends Component {
                         </button>
                     </div>
                 </div>
-                <nav style={{ transform: `scaleY(${this.state.toggleMenu})`}} >
-                    <ul className="navUl">
+
+                <nav   >
+  
+                    <ul className="navUl" style={{ display: this.state.toggleMenu ? 'none' : 'flex' }}>
                         <li className='navItems'><a href='#'>Home</a></li>
                         <li className='navItems'><a href='#'>About</a></li>
                         <li className='navItems'><a href='#'>Contact </a></li>
                     </ul>
                 </nav>
+
+                <div style = {{width:'100%', height:'600px', backgroundColor:'red'}}>
+
+                </div>
 
             </div >
         );
