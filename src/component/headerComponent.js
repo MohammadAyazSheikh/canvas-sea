@@ -9,7 +9,7 @@ export default class Header extends Component {
         super(props);
 
         this.state = {
-            toggleMenu: true,
+            toggleMenu: false,
             width: 600
         }
 
@@ -65,16 +65,17 @@ export default class Header extends Component {
                     </div>
                 </div>
 
-                <nav   >
-  
+                <nav  >
+                 <p className="navHeading"> Canvas Sea </p>
                     <ul className="navUl" style={{ display: this.state.toggleMenu ? 'none' : 'flex' }}>
+
                         <li className='navItems'><a href='#'>Home</a></li>
                         <li className='navItems'><a href='#'>About</a></li>
                         <li className='navItems'><a href='#'>Contact </a></li>
                     </ul>
                 </nav>
 
-                <div style = {{width:'100%', height:'600px', backgroundColor:'red'}}>
+                <div style={{ width: '100%', height: '600px', backgroundColor: 'red' }}>
 
                 </div>
 
