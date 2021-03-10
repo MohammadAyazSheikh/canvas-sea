@@ -1,0 +1,26 @@
+.backImageDiv{
+    position: relative;
+    width: 100%;
+    height: 600px;
+}
+
+.backImageDiv >h1{
+    color:white;
+    font-family:'Brush Script MT';
+    position: absolute;
+    font-size: 5vw;
+    left: 40%;
+    top: 50%;
+    transition: transform 0.5s, color 0.5s;
+
+}
+
+/* **************************************************************** */
+
+@media (max-width: 600px) {
+    .backImageDiv{
+        position: relative;
+        width: 100%;
+        height: 200%;
+    }
+}

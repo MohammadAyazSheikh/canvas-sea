@@ -3,6 +3,8 @@ import { FiMenu } from 'react-icons/fi';
 import '../styles/navStyle.css'
 
 let width = window.innerWidth;
+
+const style1 = { width: '200px' };
 export default class Header extends Component {
 
     constructor(props) {
@@ -10,20 +12,20 @@ export default class Header extends Component {
 
         this.state = {
             toggleMenu: false,
-            width: 600
+            width: 600,
+            flag: false,
         }
 
-        this.toggle = this.toggle.bind(this)
-        this.updateSize = this.updateSize.bind(this)
+        this.toggle = this.toggle.bind(this);
+        this.updateSize = this.updateSize.bind(this);
     }
 
     toggle() {
         console.log("invoke")
         let val = !this.state.toggleMenu
         this.setState({ toggleMenu: val })
-
-
     }
+
 
 
     updateSize() {
@@ -38,7 +40,6 @@ export default class Header extends Component {
 
 
     componentDidMount() {
-
         window.addEventListener('resize', this.updateSize);
     }
 
@@ -51,7 +52,7 @@ export default class Header extends Component {
 
 
         return (
-            <div >
+            <div className = 'mainNavDiv' >
                 <div className="header">
                     <div className='headingDiv' >
                         <p>Canvas Sea</p>
@@ -66,7 +67,7 @@ export default class Header extends Component {
                 </div>
 
                 <nav  >
-                 <p className="navHeading"> Canvas Sea </p>
+                    <p className="navHeading"> Canvas Sea </p>
                     <ul className="navUl" style={{ display: this.state.toggleMenu ? 'none' : 'flex' }}>
 
                         <li className='navItems'><a href='#'>Home</a></li>
@@ -74,11 +75,6 @@ export default class Header extends Component {
                         <li className='navItems'><a href='#'>Contact </a></li>
                     </ul>
                 </nav>
-
-                <div style={{ width: '100%', height: '600px', backgroundColor: 'red' }}>
-
-                </div>
-
             </div >
         );
     }

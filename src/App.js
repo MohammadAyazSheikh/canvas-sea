@@ -1,9 +1,9 @@
 
-import Header from './component/headerComponent';
+import Main from './component/mainComponent';
 
 function App() {
     return (
-       <Header/>
+       <Main/>
     );
 }
 
